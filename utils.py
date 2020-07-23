@@ -5,12 +5,14 @@ Created on Thu Jul 23 15:25:38 2020
 @author: asus
 """
 
+
 # !/usr/bin/python3
 # utils for traffic sign detection
 
 import cv2
 import json
 import numpy as np
+import socketClients
 
 
 # 交通标志识别模型输入尺寸
@@ -163,6 +165,8 @@ def convert_to_json(bboxes, frame_index):
         bbox_info['score'] = int(bbox[5] * 100)
         bbox_list.append(bbox_info)
     json_bbox['bboxes'] = bbox_list
+    #将结果通过socket进行传输
+    socketClients.sendData(json_bbox)
     return json_bbox
 
 
