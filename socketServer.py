@@ -7,8 +7,8 @@ Created on Sun Jul 12 16:37:10 2020
 
 from socket import *
 
-def socketServer:
-    IP = ''
+
+    IP = '127.0.0.1'
     PORT = 50000
     BUFLEN = 1024 # 一次从socket缓冲区最多读入1024个字节数据
     
@@ -28,10 +28,10 @@ def socketServer:
         recved = dataSocket.recv(BUFLEN)
         if not recved:
             break
-#        info = recved.decode()
-#        print(f'收到信息：{info}')
-        toSend = self.data.encode()
-        dataSocket.send(soSend)
+       info = recved.decode()
+        print(f'收到信息：{info}')
+        #toSend = self.data.encode()
+        #dataSocket.send(soSend)
     
     dataSocket.close()
     listenSocket.close()
